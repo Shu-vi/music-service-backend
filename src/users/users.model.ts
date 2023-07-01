@@ -1,6 +1,8 @@
 import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
 import { Role } from "../roles/roles.model";
 import { UserRoles } from "../roles/user-roles.model";
+import { Genre } from "../genres/genres.model";
+import { UsersFavouritesGenres } from "../genres/users-favourites-genres.model";
 
 interface UserCreationAttrs {
   name: string;
@@ -23,4 +25,6 @@ export class User extends Model<User, UserCreationAttrs> {
   password: string;
   @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];
+  @BelongsToMany(() => Genre, () => UsersFavouritesGenres)
+  genres: Genre[];
 }
