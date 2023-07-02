@@ -18,7 +18,7 @@ export class Playlist extends Model<Playlist, PlaylistsCreationAttrs>{
   @Column({type: DataType.STRING(100), allowNull: false, unique: true})
   image: string;
   @ForeignKey(() => User)
-  @Column
+  @Column({type: DataType.INTEGER})
   userId: number;
   @BelongsTo(() => User)
   user: User;

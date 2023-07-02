@@ -11,6 +11,7 @@ import { Album } from "../albums/albums.model";
 interface TracksCreationAttrs {
   title: string;
   source: string;
+  albumId: number;
 }
 
 @Table({tableName: 'tracks'})
@@ -30,7 +31,7 @@ export class Track extends Model<Track, TracksCreationAttrs> {
   @BelongsToMany(() => Genre, () => TrackGenres)
   genres: Genre[];
   @ForeignKey(() => Album)
-  @Column
+  @Column({type: DataType.INTEGER})
   albumId: number;
   @BelongsTo(() => Album)
   album: Album;
