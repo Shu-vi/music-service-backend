@@ -1,6 +1,7 @@
 import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
 import { DislikeTrack } from "./dislike-tracks.model";
 import { User } from "../users/users.model";
+import { LikeTrack } from "./like-tracks.model";
 
 interface TracksCreationAttrs {
   title: string;
@@ -17,4 +18,6 @@ export class Track extends Model<Track, TracksCreationAttrs> {
   source: string;
   @BelongsToMany(() => User, () => DislikeTrack)
   users: User[];
+  @BelongsToMany(() => User, () => LikeTrack)
+  users2: User[];
 }
