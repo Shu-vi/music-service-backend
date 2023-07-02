@@ -9,6 +9,7 @@ import { Role } from "./roles/roles.model";
 import { UserRoles } from "./roles/user-roles.model";
 import { Genre } from "./genres/genres.model";
 import { UsersFavouritesGenres } from "./genres/users-favourites-genres.model";
+import { Playlist } from "./playlists/playlists.model";
 
 @Module({
   controllers: [],
@@ -24,7 +25,7 @@ import { UsersFavouritesGenres } from "./genres/users-favourites-genres.model";
       password: process.env.POSTGRES_PASSWORD,
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
-      models: [User, Role, UserRoles, Genre, UsersFavouritesGenres],
+      models: [User, Role, UserRoles, Genre, UsersFavouritesGenres, Playlist],
       autoLoadModels: true
     }),
     UsersModule,
