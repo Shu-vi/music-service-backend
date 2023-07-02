@@ -15,6 +15,7 @@ import { Track } from "./tracks/tracks.model";
 import { LikeTrack } from "./tracks/like-tracks.model";
 import { PlaylistsMusic } from "./playlists/playlists-music.model";
 import { TrackGenres } from "./tracks/track-genres.model";
+import { Album } from "./albums/albums.model";
 
 @Module({
   controllers: [],
@@ -30,7 +31,7 @@ import { TrackGenres } from "./tracks/track-genres.model";
       password: process.env.POSTGRES_PASSWORD,
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
-      models: [User, Role, UserRoles, Genre, UsersFavouritesGenres, Playlist, DislikeTrack, Track, LikeTrack, PlaylistsMusic, TrackGenres],
+      models: [User, Role, UserRoles, Genre, UsersFavouritesGenres, Playlist, DislikeTrack, Track, LikeTrack, PlaylistsMusic, TrackGenres, Album],
       autoLoadModels: true
     }),
     UsersModule,

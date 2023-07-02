@@ -1,4 +1,4 @@
-import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { DislikeTrack } from "./dislike-tracks.model";
 import { User } from "../users/users.model";
 import { LikeTrack } from "./like-tracks.model";
@@ -6,6 +6,7 @@ import { Playlist } from "../playlists/playlists.model";
 import { PlaylistsMusic } from "../playlists/playlists-music.model";
 import { Genre } from "../genres/genres.model";
 import { TrackGenres } from "./track-genres.model";
+import { Album } from "../albums/albums.model";
 
 interface TracksCreationAttrs {
   title: string;
@@ -28,4 +29,9 @@ export class Track extends Model<Track, TracksCreationAttrs> {
   playlist: Playlist[];
   @BelongsToMany(() => Genre, () => TrackGenres)
   genres: Genre[];
+  @ForeignKey(() => Album)
+  @Column
+  albumId: number;
+  @BelongsTo(() => Album)
+  album: Album;
 }
