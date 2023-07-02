@@ -4,6 +4,8 @@ import { User } from "../users/users.model";
 import { LikeTrack } from "./like-tracks.model";
 import { Playlist } from "../playlists/playlists.model";
 import { PlaylistsMusic } from "../playlists/playlists-music.model";
+import { Genre } from "../genres/genres.model";
+import { TrackGenres } from "./track-genres.model";
 
 interface TracksCreationAttrs {
   title: string;
@@ -24,4 +26,6 @@ export class Track extends Model<Track, TracksCreationAttrs> {
   users2: User[];
   @BelongsToMany(() => Playlist, () => PlaylistsMusic)
   playlist: Playlist[];
+  @BelongsToMany(() => Genre, () => TrackGenres)
+  genres: Genre[];
 }
