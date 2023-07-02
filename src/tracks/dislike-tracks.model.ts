@@ -1,5 +1,4 @@
 import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { Genre } from "../genres/genres.model";
 import { User } from "../users/users.model";
 import { Track } from "./tracks.model";
 
