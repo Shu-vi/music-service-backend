@@ -11,7 +11,7 @@ export class Role extends Model<Role, RoleCreationAttrs> {
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
   id: number;
 
-  @Column({type: DataType.STRING, unique: true, allowNull: false})
+  @Column({type: DataType.STRING(40), unique: true, allowNull: false})
   title: string;
 
   @BelongsToMany(() => User, () => UserRoles)

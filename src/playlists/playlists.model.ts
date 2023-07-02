@@ -11,9 +11,9 @@ interface PlaylistsCreationAttrs {
 export class Playlist extends Model<Playlist, PlaylistsCreationAttrs>{
   @Column({type: DataType.INTEGER, primaryKey: true, autoIncrement: true, unique: true})
   id: number;
-  @Column({type: DataType.STRING, allowNull: false})
+  @Column({type: DataType.STRING(40), allowNull: false})
   title: string;
-  @Column({type: DataType.STRING, allowNull: false, unique: true})
+  @Column({type: DataType.STRING(100), allowNull: false, unique: true})
   image: string;
   @ForeignKey(() => User)
   @Column
