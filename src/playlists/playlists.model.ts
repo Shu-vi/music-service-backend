@@ -1,5 +1,7 @@
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { User } from "../users/users.model";
+import { PlaylistsMusic } from "./playlists-music.model";
+import { Track } from "../tracks/tracks.model";
 
 interface PlaylistsCreationAttrs {
   title: string;
@@ -20,4 +22,6 @@ export class Playlist extends Model<Playlist, PlaylistsCreationAttrs>{
   userId: number;
   @BelongsTo(() => User)
   user: User;
+  @BelongsToMany(() => Track, () => PlaylistsMusic)
+  tracks: Track[];
 }
