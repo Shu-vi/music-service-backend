@@ -1,15 +1,16 @@
 import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { Genre } from "../genres/genres.model";
 import { User } from "../users/users.model";
-import { Genre } from "./genres.model";
+import { Track } from "./tracks.model";
 
-@Table({tableName: 'users_favourites_genres', createdAt: false, updatedAt: false})
-export class UsersFavouritesGenres extends Model<UsersFavouritesGenres>{
+@Table({tableName: 'dislike_tracks', updatedAt: false, createdAt: false})
+export class DislikeTrack extends Model<DislikeTrack>{
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
   id: number;
-  @ForeignKey(() => Genre)
-  @Column({type: DataType.INTEGER})
-  genreId: number;
   @ForeignKey(() => User)
   @Column({type: DataType.INTEGER})
   userId: number;
+  @ForeignKey(() => Track)
+  @Column({type: DataType.INTEGER})
+  trackId: number;
 }

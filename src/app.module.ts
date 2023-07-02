@@ -10,6 +10,8 @@ import { UserRoles } from "./roles/user-roles.model";
 import { Genre } from "./genres/genres.model";
 import { UsersFavouritesGenres } from "./genres/users-favourites-genres.model";
 import { Playlist } from "./playlists/playlists.model";
+import { DislikeTrack } from "./tracks/dislike-tracks.model";
+import { Track } from "./tracks/tracks.model";
 
 @Module({
   controllers: [],
@@ -25,7 +27,7 @@ import { Playlist } from "./playlists/playlists.model";
       password: process.env.POSTGRES_PASSWORD,
       port: Number(process.env.POSTGRES_PORT),
       username: process.env.POSTGRES_USER,
-      models: [User, Role, UserRoles, Genre, UsersFavouritesGenres, Playlist],
+      models: [User, Role, UserRoles, Genre, UsersFavouritesGenres, Playlist, DislikeTrack, Track],
       autoLoadModels: true
     }),
     UsersModule,

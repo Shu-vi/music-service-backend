@@ -1,4 +1,6 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
+import { UsersFavouritesGenres } from "./users-favourites-genres.model";
+import { User } from "../users/users.model";
 
 interface GenresCreationAttrs {
   title: string;
@@ -10,4 +12,6 @@ export class Genre extends Model<Genre, GenresCreationAttrs> {
   id: number;
   @Column({type: DataType.STRING, unique: true, allowNull: false})
   title: string;
+  @BelongsToMany(() => User, () => UsersFavouritesGenres)
+  users: User[];
 }
