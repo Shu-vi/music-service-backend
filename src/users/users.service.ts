@@ -13,7 +13,7 @@ export class UsersService {
     if (user) {
       throw new HttpException({codeError: 1, message: 'Пользователь с таким email уже существует', secretMessage: ''}, HttpStatus.BAD_REQUEST);
     }
-    const role = await this.roleService.getRoleByValue("user");
+    const role = await this.roleService.getRoleByTitle("user");
     if (!role) {
       throw new HttpException({codeError: 2, message: 'Невозможно зарегистрироваться из-за внутренней ошибки сервера', secretMessage: 'Роли user не существует'}, HttpStatus.BAD_REQUEST);
     }
