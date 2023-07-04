@@ -7,11 +7,13 @@ export class RolesController {
 
   constructor(private roleService: RolesService) {}
 
+  //Работает
   @Post('/')
   create(@Body() roleDto: CreateRoleDto) {
     return this.roleService.createRole(roleDto);
   }
 
+  //Работает
   @Get('/')
   getAll() {
     return this.roleService.getAllRoles();

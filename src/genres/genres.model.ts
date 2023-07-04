@@ -8,7 +8,7 @@ interface GenresCreationAttrs {
   title: string;
 }
 
-@Table({tableName: 'genres'})
+@Table({tableName: 'genres', createdAt: false, updatedAt: false})
 export class Genre extends Model<Genre, GenresCreationAttrs> {
   @Column({primaryKey: true, autoIncrement: true, type: DataType.INTEGER, unique: true})
   id: number;
