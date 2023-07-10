@@ -1,20 +1,28 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { CreateRoleDto } from "./dto/create-role.dto";
 import { RolesService } from "./roles.service";
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { AddRoleDto } from "../users/dto/add-role.dto";
+import { Role } from "./roles.model";
 
-@Controller('roles')
+@ApiTags("Роли")
+@Controller("roles")
 export class RolesController {
 
-  constructor(private roleService: RolesService) {}
+  constructor(private roleService: RolesService) {
+  }
 
-  //Работает
-  @Post('/')
+  @ApiOperation({ summary: "Создать роль" })
+  @ApiResponse({ status: 200, type: Role })
+  @ApiBody({ type: CreateRoleDto })
+  @Post("/")
   create(@Body() roleDto: CreateRoleDto) {
     return this.roleService.createRole(roleDto);
   }
 
-  //Работает
-  @Get('/')
+  @ApiOperation({ summary: "Получить все существующие роли" })
+  @ApiResponse({ status: 200, type: [Role] })
+  @Get("/")
   getAll() {
     return this.roleService.getAllRoles();
   }

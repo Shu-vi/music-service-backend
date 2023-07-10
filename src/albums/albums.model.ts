@@ -7,15 +7,15 @@ interface AlbumCreationAttrs {
   author: string;
 }
 
-@Table({tableName: 'albums'})
+@Table({ tableName: "albums" })
 export class Album extends Model<Album, AlbumCreationAttrs> {
-  @Column({primaryKey: true, autoIncrement: true, type: DataType.INTEGER, unique: true})
+  @Column({ primaryKey: true, autoIncrement: true, type: DataType.INTEGER, unique: true })
   id: number;
-  @Column({type: DataType.STRING(100), allowNull: false})
+  @Column({ type: DataType.STRING(100), allowNull: false })
   title: string;
-  @Column({type: DataType.STRING(100), allowNull: false})
+  @Column({ type: DataType.STRING(100), allowNull: false })
   image: string;
-  @Column({type: DataType.STRING(150), allowNull: false})
+  @Column({ type: DataType.STRING(150), allowNull: false })
   author: string;
   @HasMany(() => Track)
   tracks: Track[];

@@ -4,7 +4,7 @@ import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import * as process from "process";
 import { User } from "./users/users.model";
-import { RolesModule } from './roles/roles.module';
+import { RolesModule } from "./roles/roles.module";
 import { Role } from "./roles/roles.model";
 import { UserRoles } from "./roles/user-roles.model";
 import { Genre } from "./genres/genres.model";
@@ -25,7 +25,7 @@ import { Album } from "./albums/albums.model";
       envFilePath: ".env"
     }),
     SequelizeModule.forRoot({
-      dialect: 'postgres',
+      dialect: "postgres",
       host: process.env.POSTGRES_HOST,
       database: process.env.POSTGRES_DB,
       password: process.env.POSTGRES_PASSWORD,

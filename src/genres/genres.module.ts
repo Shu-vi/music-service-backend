@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { GenresService } from './genres.service';
-import { GenresController } from './genres.controller';
+import { Module } from "@nestjs/common";
+import { GenresService } from "./genres.service";
+import { GenresController } from "./genres.controller";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { Genre } from "./genres.model";
 
@@ -10,4 +10,5 @@ import { Genre } from "./genres.model";
   imports: [SequelizeModule.forFeature([Genre])],
   exports: [GenresService]
 })
-export class GenresModule {}
+export class GenresModule {
+}

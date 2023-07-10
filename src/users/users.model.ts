@@ -7,6 +7,7 @@ import { Playlist } from "../playlists/playlists.model";
 import { Track } from "../tracks/tracks.model";
 import { DislikeTrack } from "../tracks/dislike-tracks.model";
 import { LikeTrack } from "../tracks/like-tracks.model";
+import { ApiProperty } from "@nestjs/swagger";
 
 interface UserCreationAttrs {
   name: string;
@@ -15,26 +16,40 @@ interface UserCreationAttrs {
   password: string;
 }
 
-@Table({tableName: 'users'})
+@Table({ tableName: "users" })
 export class User extends Model<User, UserCreationAttrs> {
-  @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
+  @ApiProperty({ example: "1", description: "Уникальный идентификатор" })
+  @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
-  @Column({type: DataType.STRING(32), allowNull: false})
+
+  @ApiProperty({ example: "Иван", description: "Имя" })
+  @Column({ type: DataType.STRING(32), allowNull: false })
   name: string;
-  @Column({type: DataType.STRING(32), allowNull: false})
+
+  @ApiProperty({ example: "Иванов", description: "Фамилия" })
+  @Column({ type: DataType.STRING(32), allowNull: false })
   surname: string;
-  @Column({type: DataType.STRING(32), unique: true, allowNull: false})
+
+  @ApiProperty({ example: "test@gmail.com", description: "Электронная почта" })
+  @Column({ type: DataType.STRING(32), unique: true, allowNull: false })
   email: string;
-  @Column({type: DataType.STRING(24), allowNull: false})
+
+  @ApiProperty({ example: "SjgiQ73.sF%saf.", description: "Пароль" })
+  @Column({ type: DataType.STRING(24), allowNull: false })
   password: string;
+
   @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];
+
   @BelongsToMany(() => Genre, () => UsersFavouritesGenres)
   genres: Genre[];
+
   @HasMany(() => Playlist)
   playlists: Playlist[];
+
   @BelongsToMany(() => Track, () => DislikeTrack)
   tracks: Track[];
+
   @BelongsToMany(() => Track, () => LikeTrack)
   tracks2: Track[];
 }

@@ -8,14 +8,17 @@ interface GenresCreationAttrs {
   title: string;
 }
 
-@Table({tableName: 'genres', createdAt: false, updatedAt: false})
+@Table({ tableName: "genres", createdAt: false, updatedAt: false })
 export class Genre extends Model<Genre, GenresCreationAttrs> {
-  @Column({primaryKey: true, autoIncrement: true, type: DataType.INTEGER, unique: true})
+  @Column({ primaryKey: true, autoIncrement: true, type: DataType.INTEGER, unique: true })
   id: number;
-  @Column({type: DataType.STRING(40), unique: true, allowNull: false})
+
+  @Column({ type: DataType.STRING(40), unique: true, allowNull: false })
   title: string;
+
   @BelongsToMany(() => User, () => UsersFavouritesGenres)
   users: User[];
+
   @BelongsToMany(() => Track, () => TrackGenres)
   tracks: Track[];
 }

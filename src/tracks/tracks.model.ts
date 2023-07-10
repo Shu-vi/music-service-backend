@@ -14,25 +14,33 @@ interface TracksCreationAttrs {
   albumId: number;
 }
 
-@Table({tableName: 'tracks'})
+@Table({ tableName: "tracks" })
 export class Track extends Model<Track, TracksCreationAttrs> {
-  @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
+  @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
-  @Column({type: DataType.STRING(100), allowNull: false})
+
+  @Column({ type: DataType.STRING(100), allowNull: false })
   title: string;
-  @Column({type: DataType.STRING(100), allowNull: false})
+
+  @Column({ type: DataType.STRING(100), allowNull: false })
   source: string;
+
   @BelongsToMany(() => User, () => DislikeTrack)
   users: User[];
+
   @BelongsToMany(() => User, () => LikeTrack)
   users2: User[];
+
   @BelongsToMany(() => Playlist, () => PlaylistsMusic)
   playlist: Playlist[];
+
   @BelongsToMany(() => Genre, () => TrackGenres)
   genres: Genre[];
+
   @ForeignKey(() => Album)
-  @Column({type: DataType.INTEGER})
+  @Column({ type: DataType.INTEGER })
   albumId: number;
+
   @BelongsTo(() => Album)
   album: Album;
 }

@@ -1,4 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller('playlists')
-export class PlaylistsController {}
+@ApiTags("Плейлисты")
+@Controller("playlists")
+export class PlaylistsController {
+
+  //TODO добавление музыки в плейлист
+
+  //TODO удаление музыки из плейлиста
+
+
+}
