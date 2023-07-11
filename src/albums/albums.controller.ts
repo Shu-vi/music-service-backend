@@ -3,8 +3,6 @@ import { AlbumsService } from "./albums.service";
 import { CreateAlbumDto } from "./dto/create-album.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { Role } from "../roles/roles.model";
-import { GetRolesDto } from "../users/dto/get-roles.dto";
 import { Album } from "./albums.model";
 
 @ApiTags("Альбомы")

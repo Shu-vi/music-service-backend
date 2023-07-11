@@ -7,8 +7,6 @@ import { RolesModule } from "../roles/roles.module";
 import { Genre } from "../genres/genres.model";
 import { UsersFavouritesGenres } from "../genres/users-favourites-genres.model";
 import { GenresModule } from "../genres/genres.module";
-import { PlaylistsModule } from "../playlists/playlists.module";
-import { FileModule } from "../file/file.module";
 
 @Module({
   controllers: [UsersController],
@@ -16,9 +14,7 @@ import { FileModule } from "../file/file.module";
   imports: [
     SequelizeModule.forFeature([User, Genre, UsersFavouritesGenres]),
     RolesModule,
-    GenresModule,
-    PlaylistsModule,
-    FileModule
+    GenresModule
   ]
 })
 export class UsersModule {

@@ -11,11 +11,11 @@ interface GenresCreationAttrs {
 
 @Table({ tableName: "genres", createdAt: false, updatedAt: false })
 export class Genre extends Model<Genre, GenresCreationAttrs> {
-  @ApiProperty({example: 1, description: "ID сущности"})
+  @ApiProperty({ example: 1, description: "ID сущности" })
   @Column({ primaryKey: true, autoIncrement: true, type: DataType.INTEGER, unique: true })
   id: number;
 
-  @ApiProperty({example: "Рок", description: "Название жанра"})
+  @ApiProperty({ example: "Рок", description: "Название жанра" })
   @Column({ type: DataType.STRING(40), unique: true, allowNull: false })
   title: string;
 

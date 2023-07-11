@@ -4,7 +4,6 @@ import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import * as process from "process";
 import { User } from "./users/users.model";
-import { RolesModule } from "./roles/roles.module";
 import { Role } from "./roles/roles.model";
 import { UserRoles } from "./roles/user-roles.model";
 import { Genre } from "./genres/genres.model";
@@ -17,7 +16,6 @@ import { PlaylistsMusic } from "./playlists/playlists-music.model";
 import { TrackGenres } from "./tracks/track-genres.model";
 import { Album } from "./albums/albums.model";
 import { PlaylistsModule } from "./playlists/playlists.module";
-import { FileModule } from "./file/file.module";
 import { AlbumsModule } from "./albums/albums.module";
 
 @Module({

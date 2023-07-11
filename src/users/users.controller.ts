@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Body, Controller, Get, Post } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UsersService } from "./users.service";
 import { SetGenresDto } from "./dto/set-genres.dto";
@@ -7,8 +7,6 @@ import { GetRolesDto } from "./dto/get-roles.dto";
 import { User } from "./users.model";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Role } from "../roles/roles.model";
-import { CreatePlaylistDto } from "../playlists/dto/create-playlist.dto";
-import { FileInterceptor } from "@nestjs/platform-express";
 
 @ApiTags("Пользователи")
 @Controller("/users")
@@ -44,9 +42,6 @@ export class UsersController {
     return this.usersService.addRole(roleDto);
   }
 
-  //TODO Удаление плейлиста
-
-  //TODO получение всех ролей пользователя
   @ApiOperation({ summary: "Получить роли пользователя" })
   @ApiResponse({ status: 200, type: [Role] })
   @ApiBody({ type: GetRolesDto })

@@ -2,8 +2,6 @@ import { Body, Controller, Get, Post } from "@nestjs/common";
 import { GenresService } from "./genres.service";
 import { CreateGenreDto } from "./dto/create-genre.dto";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { Role } from "../roles/roles.model";
-import { CreateRoleDto } from "../roles/dto/create-role.dto";
 import { Genre } from "./genres.model";
 
 @ApiTags("Жанры")

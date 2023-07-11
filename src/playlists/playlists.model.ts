@@ -11,15 +11,15 @@ interface PlaylistsCreationAttrs {
 
 @Table({ tableName: "playlists" })
 export class Playlist extends Model<Playlist, PlaylistsCreationAttrs> {
-  @ApiProperty({example: 1, description: "ID сущности плейлиста"})
+  @ApiProperty({ example: 1, description: "ID сущности плейлиста" })
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true, unique: true })
   id: number;
 
-  @ApiProperty({example: "Для занятия спортом", description: "Название плейлиста"})
+  @ApiProperty({ example: "Для занятия спортом", description: "Название плейлиста" })
   @Column({ type: DataType.STRING(40), allowNull: false })
   title: string;
 
-  @ApiProperty({example: 1242, description: "ID пользователя, которому принадлежит плейлист"})
+  @ApiProperty({ example: 1242, description: "ID пользователя, которому принадлежит плейлист" })
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })
   userId: number;
