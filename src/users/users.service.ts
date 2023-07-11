@@ -7,13 +7,17 @@ import { SetGenresDto } from "./dto/set-genres.dto";
 import { GenresService } from "../genres/genres.service";
 import { AddRoleDto } from "./dto/add-role.dto";
 import { Role } from "../roles/roles.model";
-import { CreatePlaylistDto } from "./dto/create-playlist.dto";
+import { CreatePlaylistDto } from "../playlists/dto/create-playlist.dto";
+import { FileService } from "../file/file.service";
+import { PlaylistsService } from "../playlists/playlists.service";
 
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User) private userRepository: typeof User,
               private roleService: RolesService,
-              private genreService: GenresService) {
+              private genreService: GenresService,
+              private fileService: FileService,
+              private playlistService: PlaylistsService) {
   }
 
   async createUser(userDto: CreateUserDto) {
@@ -113,6 +117,4 @@ export class UsersService {
     await user.$add("roles", role.id);
     return dto;
   }
-
-
 }

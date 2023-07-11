@@ -7,7 +7,7 @@ import { GetRolesDto } from "./dto/get-roles.dto";
 import { User } from "./users.model";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Role } from "../roles/roles.model";
-import { CreatePlaylistDto } from "./dto/create-playlist.dto";
+import { CreatePlaylistDto } from "../playlists/dto/create-playlist.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
 
 @ApiTags("Пользователи")
@@ -43,8 +43,6 @@ export class UsersController {
   addRole(@Body() roleDto: AddRoleDto) {
     return this.usersService.addRole(roleDto);
   }
-
-  //TODO Создание плейлиста
 
   //TODO Удаление плейлиста
 
