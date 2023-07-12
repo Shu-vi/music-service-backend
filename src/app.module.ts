@@ -17,6 +17,7 @@ import { TrackGenres } from "./tracks/track-genres.model";
 import { Album } from "./albums/albums.model";
 import { PlaylistsModule } from "./playlists/playlists.module";
 import { AlbumsModule } from "./albums/albums.module";
+import { TracksModule } from "./tracks/tracks.module";
 
 @Module({
   controllers: [],
@@ -37,7 +38,8 @@ import { AlbumsModule } from "./albums/albums.module";
     }),
     UsersModule,
     PlaylistsModule,
-    AlbumsModule
+    AlbumsModule,
+    TracksModule
   ],
   exports: []
 })
