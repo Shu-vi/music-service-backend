@@ -28,4 +28,8 @@ export class GenresService {
   async getAllGenres() {
     return await this.genreRepository.findAll();
   }
+
+  async getGenreById(genreId: number) {
+    return await this.genreRepository.findOne({ where: { id: genreId } });
+  }
 }

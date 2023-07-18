@@ -8,6 +8,7 @@ import { LikeTrackDto } from "./dto/like-track.dto";
 import { DislikeTrackDto } from "./dto/dislike-track.dto";
 import { LikeTrack } from "./like-tracks.model";
 import { DislikeTrack } from "./dislike-tracks.model";
+import { SetGenreDto } from "./dto/set-genre.dto";
 
 @ApiTags("Треки")
 @Controller("tracks")
@@ -46,5 +47,13 @@ export class TracksController {
     return this.trackService.dislikeTrack(dislikeTrackDto);
   }
 
-  //TODO добавить треку жанр
+  @ApiOperation({ summary: "Добавить треку жанр" })
+  @ApiResponse({ status: 200, type: SetGenreDto })
+  @ApiBody({
+    type: SetGenreDto
+  })
+  @Post("/genre")
+  setGenre(@Body() setGenreDto: SetGenreDto) {
+    return this.trackService.setGenre(setGenreDto);
+  }
 }

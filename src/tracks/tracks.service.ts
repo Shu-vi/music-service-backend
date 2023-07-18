@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { CreateTrackDto } from "./dto/create-track.dto";
 import { Track } from "./tracks.model";
 import { InjectModel } from "@nestjs/sequelize";
@@ -7,12 +7,15 @@ import { LikeTrackDto } from "./dto/like-track.dto";
 import { DislikeTrackDto } from "./dto/dislike-track.dto";
 import { DislikeTrack } from "./dislike-tracks.model";
 import { LikeTrack } from "./like-tracks.model";
+import { SetGenreDto } from "./dto/set-genre.dto";
+import { GenresService } from "../genres/genres.service";
 
 @Injectable()
 export class TracksService {
   constructor(
     @InjectModel(Track) private trackRepository: typeof Track,
-    private fileService: FileService) {
+    private fileService: FileService,
+    private genreService: GenresService) {
   }
 
   async createTrack(trackDto: CreateTrackDto, track) {
@@ -54,5 +57,26 @@ export class TracksService {
   async getDislike(dislikeTrackDto: DislikeTrackDto) {
     const { userId, trackId } = dislikeTrackDto;
     return await DislikeTrack.findOne({ where: { userId, trackId } });
+  }
+
+  async setGenre(setGenreDto: SetGenreDto) {
+    const genre = await this.genreService.getGenreById(setGenreDto.genreId);
+    if (!genre) {
+      throw new HttpException({
+        codeError: 6,
+        message: `Жанра не существует`,
+        secretMessage: `Жанра с ID ${setGenreDto.genreId} не существует`
+      }, HttpStatus.BAD_REQUEST);
+    }
+    const track = await this.trackRepository.findOne({ where: { id: setGenreDto.trackId } });
+    if (!track) {
+      throw new HttpException({
+        codeError: 9,
+        message: `Трека не существует`,
+        secretMessage: `Трека с ID ${setGenreDto.trackId} не существует`
+      }, HttpStatus.BAD_REQUEST);
+    }
+    await track.$set("genres", genre)
+    return setGenreDto;
   }
 }
